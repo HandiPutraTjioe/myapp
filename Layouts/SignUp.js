@@ -1,225 +1,188 @@
 import React , { useState, useRef, useEffect, Component } from 'react';
-import { View, Text, StyleSheet, Image, CheckBox } from 'react-native';
-import { Container, Item, Input, Header, Body, Content, Title, Button, Label, Form } from 'native-base';
-import { TextInput } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Keyboard } from 'react-native';
+import { Container, Item, Button, Label, Form, CheckBox } from 'native-base';
 import { TouchableRipple } from 'react-native-paper';
-import { Field, reduxForm } from 'redux-form';
-
+import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
-var iconUsername = require('../img/IconUsername.png');
-var iconEmail = require('../img/IconEmail.png');
-var iconNomorPonsel = require('../img/IconNomorPonsel.png');
+// var iconUsername = require('../img/IconUsername.png');
+// var iconEmail = require('../img/IconEmail.png');
+// var iconNomorPonsel = require('../img/IconNomorPonsel.png');
 
-const validate = values => {
-  const error = {};
-  error.email = '';
-  error.name = '';
-  error.phone = '';
-  
-  var ema = values.email;
-  var nm = values.name;
-  var telp = values.phone;
+const Register = () => {
+  const navigation = useNavigation()
 
-  if(values.email === undefined){
-    ema = '';
-  }
+  let [userName, setUserName] = useState('');
+  let [userEmail, setUserEmail] = useState('');
+  let [userPhone, setUserPhone] = useState('');
+  let [loading, setLoading] = useState(false);
+  let [errortext, setErrortext] = useState('');
+  let [isRegistrationSuccess, setIsRegistrationSuccess] = useState(false);
 
-  if(values.name === undefined){
-    nm = '';
-  }
+  const handleSubmitButton = props => {
+    setErrortext('');
 
-  if(values.phone === undefined){
-    telp = '';
-  }
-
-  if(ema.length !== 1 && ema.length < 8 && ema !== ''){
-    error.email = 'too short';
-  } else if(!ema.includes('@') && ema !== ''){
-    error.email = '@ not included';
-  } else if(!ema.includes('.') && ema !== ''){
-    error.email = '.com not included';
-  }
-
-  if(nm.length < 8){
-    error.name = 'Max 8 characters';
-  }
-  
-  if(telp.substr(0,1) !== '8'){
-    error.phone = 'begin with 8'
-  } else if(telp.length > 12){
-    error.phone = 'not greater than 12 digits!';
-  } else if(!!isNaN(telp)){
-    error.phone = 'must be a number'
-  } else {
-    error.phone = ''
-  }
-
-  return error;
-};
-
-class SimpleForm extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      isReady: false,
-      check: false,
-      txtname: '',
-      txtemail: '',
-      txtphone: ''
-    };
-
-    this.renderInput = this.renderInput.bind(this);
-  }
-
-  // updateValue(text, field) {
-  //   if (field == 'txtname') {
-  //     this.setState({
-  //       txtname: text,
-  //     })
-  //   } else if (field == 'txtemail') {
-  //     this.setState({
-  //       txtemail: text,
-  //     })
-  //   } else if (field == 'txtphone') {
-  //     this.setState({
-  //       txtphone: text,
-  //     })
-  //   }
-  // }
-
-  // onSubmit() {
-  //   let collection = {}
-  //   collection.txtname = this.state.txtname,
-  //   collection.txtemail = this.state.txtemail,
-  //   collection.txtphone = this.state.txtphone
-
-  //   console.warn(collection);
-  // }
-
-  isCheck(){
-    this.setState({
-      check: !this.state.check,
-    })
-  }
- 
-  renderInput({ input, label, type, meta: { touched, error, warning } }){
-    var hasError= false;
-    if(error !== undefined){
-      hasError= true;
+    if (!userName) {
+      alert('Name : \nPlease Fill Name');
+      return;
+    } 
+    
+    if (userName.length > 5) {
+      alert('Name : \nMust Greater than 5 Characters');
+      return;
     }
-    return( 
-      <Item error= {hasError}>
-        <Input {...input}/>
-        {hasError ? <Text>{error}</Text> : <Text />}
-      </Item>
-    )
+    
+    if (!userEmail) {
+      alert('Email : \nPlease Fill Email');
+      return;
+    } 
+    
+    if (userEmail.length > 8) {
+      alert('Email : \ntoo short');
+      return;
+    } 
+    
+    if (!userEmail.includes('@')) {
+      alert('Email : \nMust Include @');
+      return;
+    } else if (!userEmail.includes('.com')) {
+      alert('Email : \nMust Include .com');
+      return;
+    }
+
+    if (!userPhone) {
+      alert('Phone Number : \nPlease Fill Phone Number');
+      return;
+    } 
+
+    if (userPhone.substr(0,1) !== '8') {
+      alert('Phone Number : \nbegin with 8');
+      return;
+    }
+
+    alert('Success!!', navigation.navigate('Home'));
+    
+    // if (userEmail.length < 8) {
+    //   alert('Email name too short {"\n"} Max 8 Characters');
+    //   return;
+    // } else if (!userEmail.includes('@') && !userEmail.includes('.com')) {
+    //   alert('Must Include @ and .com');
+    // }
+
+    // if (userPhone.substr(0,1) !== '8') {
+    //   alert('begin with 8');
+    //   return;
+    // } else if (userPhone.length > 12) {
+    //   alert('not greater than 12 digits!');
+    //   return;
+    // } else if (!!isNaN(userPhone)) {
+    //   alert('must be a number!');
+    //   return;
+    // }
   }
 
-  render(){
-    
-    const { handleSubmit, reset } = this.props;
-    
-    const SignUp = () => {
-      const navigation = useNavigation()
+  return(
+    <View style={ styles.container }>
+          <View style={ styles.containerJudul }>
+              <Text>
+                  Terima kasih telah bergabung bersama kami :) {'\n'}
+                  Kami akan mengirimkan 
+                  <Text style={{ fontWeight: 'bold' }}> Kode OTP</Text> melalui 
+                  <Text style={{ fontWeight: 'bold' }}> Email </Text> {'\n'}
+                  untuk proses verifikasi
+              </Text>
+          </View>   
 
-      const onSuccess = () => {
-        // if (nm.length !== '' && ema.length !== '' && telp.length !== '') {
-        //   alert("Name or Email or Phone Number {'\n'} Must Be Fill!!");
-        // } else {
-        // }
-        alert("Success!!", navigation.navigate('SignIn'));
-      }
+          <View style={ styles.containerFields }>
+              <View style={ styles.containerTextUsername }>
+                <Item style={ styles.openDialogViewUsername }>
+                    <TextInput
+                      style={ styles.textInputUsername }
+                      onChangeText={ userName => setUserName(userName) }
+                      underlineColorAndroid = "#FFFFFF"
+                      placeholder = "Nama Lengkap"
+                      placeholderTextColor = "#828282"
+                      returnKeyType = "next"
+                      onSubmitEditing={() => 
+                        this._emailinput && this._emailinput.focus()
+                      }
+                      blurOnSubmit={ false }/>
+                </Item>
+              </View>
 
-      return(
-        <View style={ styles.container }>
-            <View style={ styles.containerJudul }>
-                <Text>
-                    Terima kasih telah bergabung bersama kami :) {'\n'}
-                    Kami akan mengirimkan 
-                    <Text style={{ fontWeight: 'bold' }}> Kode OTP</Text> melalui 
-                    <Text style={{ fontWeight: 'bold' }}> Email </Text> {'\n'}
-                    untuk proses verifikasi
-                </Text>
-            </View>   
+              <View style={ styles.containerTextEmail }>
+                <Item style={ styles.openDialogViewEmail }>
+                    <TextInput
+                      style={ styles.textInputEmail }
+                      onChangeText={ userEmail => setUserEmail(userEmail)}
+                      underlineColorAndroid = "#F6F6F7"
+                      placeholder = "Alamat Email"
+                      placeholderTextColor = "#828282"
+                      keyboardType = "email-address"
+                      ref={ref => {
+                        this._emailinput = ref;
+                      }}
+                      returnKeyType = "next"
+                      onSubmitEditing = {() => this._phoneinput && this._phoneinput.focus()}
+                      blurOnSubmit = {false}/>
+                </Item>
+              </View>
 
-            <View style={ styles.containerFields }>
-                <View style={ styles.containerTextUsername }>
-                  <Item style={ styles.openDialogViewUsername } floatingLabel>
-                      <Label>Nama Lengkap</Label>
-                      <Field 
-                          name="name" 
-                          style={ styles.textInputUsername } 
-                          // placeholder="nm"
-                          component={ this.renderInput }
-                          />
-                  </Item>
-                </View>
-
-                <View style={ styles.containerTextEmail }>
-                  <Item style={ styles.openDialogViewEmail }>
-                      <Field 
-                          name="email"
+              <View style={ styles.containerTextNomorPonsel }>
+                <Item style={ styles.openDialogViewNomorPonsel }>
+                    <TextInput
                           style={ styles.textInputEmail }
-                          // placeholder="ema"
-                          component={ this.renderInput } 
-                          />
-                  </Item>
-                </View>
+                          onChangeText={ userPhone => setUserPhone(userPhone)}
+                          underlineColorAndroid = "#F6F6F7"
+                          placeholder = "Nomor Ponsel"
+                          placeholderTextColor = "#828282"
+                          keyboardType = "numeric"
+                          ref={ref => {
+                            this._phoneinput = ref;
+                          }}
+                          returnKeyType = "next"
+                          onSubmitEditing = {Keyboard.dismiss}
+                          blurOnSubmit = {false}/>
+                </Item>
+              </View>
 
-                <View style={ styles.containerTextNomorPonsel }>
-                  <Item style={ styles.openDialogViewNomorPonsel } floatingLabel>
-                      <Label>Nomor Ponsel</Label>
-                      <Field 
-                          name="phone"
-                          style={ styles.textInputNomorPonsel }
-                          // placeholder="tlp"
-                          component={ this.renderInput } 
-                          />
-                  </Item>
-                </View>
+              <View style={ styles.containerCheckBox }>
+                    <CheckBox
+                        // value={this.state.Check}
+                        // onChange={()=>this.isCheck()}
+                        />
+                    <View style={ styles.openDialogCheckBox }>
+                      <Text style={{ marginLeft: 28, fontSize: 12, lineHeight: 18 }}>
+                      Saya setuju dengan 
+                      <Text style={{ fontWeight: 'bold' }}> Syarat {'&'} ketentuan</Text> dan {'\n'}
+                      <Text style={{ fontWeight: 'bold' }}>Kebijakan Privasi</Text>
+                    </Text>
+                  </View>
+              </View>
 
-                <View style={ styles.containerCheckBox }>
-                      <CheckBox
-                          // value={this.state.Check}
-                          onChange={()=>this.isCheck()}/>
-                      <View style={ styles.openDialogCheckBox }>
-                        <Text style={{ marginLeft: 28, fontSize: 12, lineHeight: 18 }}>
-                        Saya setuju dengan 
-                        <Text style={{ fontWeight: 'bold' }}> Syarat {'&'} ketentuan</Text> dan {'\n'}
-                        <Text style={{ fontWeight: 'bold' }}>Kebijakan Privasi</Text>
-                      </Text>
-                    </View>
-                </View>
+              {
+                errortext != '' ? (
+                  <Text> { errortext } </Text>
+                ) : null
+              }
 
-                <View style={ styles.bottom }>
-                    <View style={{ height: 80, flexDirection: 'row', 
-                        justifyContent: 'center', alignItems: 'center' }}>
-                        <TouchableRipple 
-                            style={{ backgroundColor: '#4F74E2', opacity: 0.3, width: 360, height: 44,
-                            justifyContent: 'center', elevation: 4, borderRadius: 20, marginTop: 50 }}
-                            // onPress= { reset }
-                            onPress = {() => this.onSubmit()}>
-                            <Text style={{ color: 'white', textAlign: 'center', fontSize: 15 }}>SIGN UP</Text>
-                        </TouchableRipple>
-                    </View>
-                </View>
-            </View>
-        </View>  
-      )
-    }
-    
-    return (
-      <SignUp />
-    )
-  }
+              <View style={ styles.bottom }>
+                  <View style={{ height: 80, flexDirection: 'row', 
+                      justifyContent: 'center', alignItems: 'center' }}>
+                      <TouchableRipple 
+                          style={{ backgroundColor: '#4F74E2', opacity: 0.3, width: 360, height: 44,
+                          justifyContent: 'center', elevation: 4, borderRadius: 20, marginTop: 50 }}
+                          onPress = {() => handleSubmitButton()}>
+                          <Text style={{ color: 'white', textAlign: 'center', fontSize: 15 }}>SIGN UP</Text>
+                      </TouchableRipple>
+                  </View>
+              </View>
+          </View>
+      </View>  
+  );
 }
 
-export default reduxForm({
-  form: 'test',
-  validate
-})(SimpleForm)
-
+export default Register;
 
 // import React, { useState, useRef, useEffect } from 'react';
 // import { View, Text, StyleSheet, Image } from 'react-native';
