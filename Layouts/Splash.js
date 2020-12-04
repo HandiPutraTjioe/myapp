@@ -9,7 +9,7 @@ var lg = require("../img/Logo_Balance.png");
 const Splash = () => {
     const navigation = useNavigation()
     setTimeout(() => {
-        navigation.navigate('Intro');
+        navigation.navigate('SignIn');
     }, 3000);
     return(
         <View style={ styles.container }>

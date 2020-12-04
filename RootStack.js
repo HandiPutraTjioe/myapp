@@ -9,7 +9,13 @@ import SignIn from './Layouts/SignIn';
 import SignUp from './Layouts/SignUp';
 import Home from './Layouts/Home';
 import VerifikasiOTP from './Layouts/VerifikasiOTP';
-import MenuHome from './Layouts/Components/MenuHome';
+import SecurityPage from './Layouts/SecurityPage';
+import Payment from './Layouts/Payment';
+import Profile from './Layouts/Profile';
+import Promo from './Layouts/Promo';
+import Notification from './Layouts/Notification';
+import ScanQR from './Layouts/ScanQR';
+import FindMerchant from './Layouts/FIndMerchant';
   
   const Stack = createStackNavigator();
   
@@ -19,25 +25,43 @@ import MenuHome from './Layouts/Components/MenuHome';
         <Stack.Navigator initialRouteName="MySignUp">
           {/* <Stack.Screen name="TheSplash" 
                         component={Splash}
-                        options={{ headerShown: false }}/>
-          <Stack.Screen name="Intro"
+                        options={{ headerShown: false }}/> */}
+          {/* <Stack.Screen name="Intro"
                         component={Intro}
                         options={{ headerShown: false }}/> */}
           {/* <Stack.Screen name="SignIn"
                         component={SignIn}
-                        options={{ headerShown: false }}/> */}
-          {/* <Stack.Screen name="SignUp"
+                        options={{ headerShown: false }}/>
+          <Stack.Screen name="SignUp"
                         component={SignUp}
-                        options={{ headerShown: true }} />            
-          <Stack.Screen name="VerifikasiOTP"
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Sign Up' }} />             */}
+          {/* <Stack.Screen name="VerifikasiOTP"
                         component={VerifikasiOTP}
                         options={{ title: "Verifikasi OTP" }}/> */}
+          {/* <Stack.Screen name="SecurityPIN"
+                        component={SecurityPage}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Security PIN' }}/> */}
           <Stack.Screen name="TheHome"
                         component={Home}
                         options={{ headerShown: false }}/>
-          <Stack.Screen name="HomeScreen"
-                        component={MenuHome}
+          <Stack.Screen name="Payment"
+                        component={Payment}
+                        options={{ headerShown: true, headerTitleAlign: 'center' }}/>
+          <Stack.Screen name="ProfileScreen"
+                        component={Profile}
                         options={{ headerShown: false }}/>
+          <Stack.Screen name="PromoScreen"
+                        component={Promo}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Promo & Cashback' }}/>
+          <Stack.Screen name="NotificationScreen"
+                        component={Notification}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Notifications' }}/>
+          <Stack.Screen name="ScanQRScreen"
+                        component={ScanQR}
+                        options={{ headerShown: false, headerTitleAlign: 'center', title: ' ' }}/>
+          <Stack.Screen name="FindMerchantScreen"
+                        component={FindMerchant}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Find Merchant' }}/>
         </Stack.Navigator>
       </NavigationContainer>
     );
