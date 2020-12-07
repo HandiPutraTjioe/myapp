@@ -16,6 +16,9 @@ import Promo from './Layouts/Promo';
 import Notification from './Layouts/Notification';
 import ScanQR from './Layouts/ScanQR';
 import FindMerchant from './Layouts/FIndMerchant';
+
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
   
   const Stack = createStackNavigator();
   

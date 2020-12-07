@@ -3,8 +3,6 @@ import { View, Text, Image, TextInput, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-// import { useNavigation } from '@react-navigation/native';
-
 export default class FindMerchant extends Component{
     state = {
         merchantName: '',

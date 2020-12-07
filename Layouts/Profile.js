@@ -9,13 +9,8 @@ import profile_background from '../assets/background_profile.png';
 import icon_edit_profile from '../assets/icon_edit_profile.png';
 import icon_faq from '../assets/icon_faq.png';
 import icon_cs from '../assets/icon_cs.png';
-
 import arrow from '../assets/arrow.png';
-
 import Footers from './Footers';
-
-import * as Font from 'expo-font';
-import { autofill } from 'redux-form';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // var bg = require("../img/background.png");

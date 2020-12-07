@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
 import scanQris from '../assets/scanQris.png';
 import findMerchant from '../assets/findMerchant.png';
 

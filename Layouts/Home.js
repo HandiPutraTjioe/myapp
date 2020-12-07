@@ -6,10 +6,7 @@ import { TouchableRipple } from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import * as Font from 'expo-font';
-
 import ProfilePicture from '../assets/aelwen1.jpg';
-import MyImage from '../assets/card_empty.png';
 
 import MyImage1 from '../assets/zero_card.png';
 import MyImage2 from '../assets/alfa_card.png';
@@ -18,13 +15,6 @@ import { Avatar } from 'react-native-paper';
 import Footers from './Footers';
 
 import {ScrollView, FlatList} from 'react-native-gesture-handler';
-
-// import Icon from 'react-native-vector-icons/Ionicons';
-
-// import { createAppContainer } from 'react-navigation';
-// import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-
-// import MenuHome from './Components/MenuHome';
 
 var bg = require("../img/background.png");
 var lg = require("../img/Logo_Balance.png");

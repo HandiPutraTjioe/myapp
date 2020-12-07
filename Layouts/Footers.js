@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
-import { Footer, FooterTab, Button, Text, Icon } from 'native-base';
+import React, { Component, useEffect } from 'react';
+import { Image, StyleSheet, View, Text } from 'react-native';
+import { Footer, FooterTab, Button, Icon } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
-
 import * as Font from 'expo-font';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import qrcode from '../assets/qr-icon.png';
-
 
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -95,26 +93,17 @@ import qrcode from '../assets/qr-icon.png';
 //     }
 //   }
 
-export default class TabFooters extends Component{
-    state = {
-        loading: true
+export default class TabFooters extends Component{  
+    useEffect = () => {
+        async () => await Font.loadAsync({
+            Roboto: require('native-base/Fonts/Roboto.ttf'),
+            Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+        })
     }
-    async componentDidMount() {
-        await Font.loadAsync({
-          Roboto: require('native-base/Fonts/Roboto.ttf'),
-          Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
-        });
-    
-        this.setState({ loading: false });
-    }
-
     render(){
-        
         const Footers = () => {
-            const navigation = useNavigation()
-            
+            const navigation = useNavigation()            
             return(
-                
                 <Footer>
                     <FooterTab style={{ backgroundColor: '#ffffff' }}>
                         <Button vertical onPress={() => navigation.navigate("TheHome")}>
@@ -124,8 +113,7 @@ export default class TabFooters extends Component{
                             <View>
                                 <Text style={{ fontWeight: '200', color: '#4746FF' }}>Home</Text>
                             </View>
-                        </Button>
-                        
+                        </Button>                        
                         
                         <Button vertical>
                             <TouchableOpacity 
@@ -153,7 +141,7 @@ export default class TabFooters extends Component{
                 </Footer>
             );
         }
-
+        
         return(
             <Footers />
         );
