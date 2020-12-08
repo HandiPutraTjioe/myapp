@@ -16,9 +16,12 @@ import Promo from './Layouts/Promo';
 import Notification from './Layouts/Notification';
 import ScanQR from './Layouts/ScanQR';
 import FindMerchant from './Layouts/FIndMerchant';
+import LocationMerchant from './Layouts/LocationMerchant';
+import errorFindMerchant from './Layouts/Components/ErrorFindMerchant';
+import InputNominal from './Layouts/InputNominal';
 
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+// import { MaterialCommunityIcons } from '@expo/vector-icons';
+// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
   
   const Stack = createStackNavigator();
   
@@ -41,15 +44,12 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
           {/* <Stack.Screen name="VerifikasiOTP"
                         component={VerifikasiOTP}
                         options={{ title: "Verifikasi OTP" }}/> */}
-          {/* <Stack.Screen name="SecurityPIN"
-                        component={SecurityPage}
-                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Security PIN' }}/> */}
           <Stack.Screen name="TheHome"
                         component={Home}
                         options={{ headerShown: false }}/>
           <Stack.Screen name="Payment"
                         component={Payment}
-                        options={{ headerShown: true, headerTitleAlign: 'center' }}/>
+                        options={{ headerShown: true, headerTitleAlign: 'center', headerTransparent: true }}/>
           <Stack.Screen name="ProfileScreen"
                         component={Profile}
                         options={{ headerShown: false }}/>
@@ -65,6 +65,18 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
           <Stack.Screen name="FindMerchantScreen"
                         component={FindMerchant}
                         options={{ headerShown: true, headerTitleAlign: 'center', title: 'Find Merchant' }}/>
+          <Stack.Screen name="LocationMerchantScreen"
+                        component={LocationMerchant}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Find Merchant' }}/>
+          <Stack.Screen name="ErrorFindMerchantScreen"
+                        component={errorFindMerchant}
+                        options={{ headerShown: false, headerTitleAlign: 'center', title: 'Find Merchant' }}/>
+          <Stack.Screen name="InputNominalScreen"
+                        component={InputNominal}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Find Merchant', headerTransparent: true }}/>
+          <Stack.Screen name="SecurityPINScreen"
+                        component={SecurityPage}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Security PIN', headerTransparent: true }}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

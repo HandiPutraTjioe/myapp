@@ -36,7 +36,7 @@ const VerifikasiOTP = () => {
     const onChangeText = (val) => {
         setInternalVal(val)
         // if (val.length === lengthInput) {
-        //     navigation.navigate('TheHome')
+        //     navigation.navigate('SecurityPage')
         // }
     }
 

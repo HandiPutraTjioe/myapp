@@ -34,7 +34,7 @@ export default class Security extends Component{
 
     render(){
         const { securitypin } = this.state;
-        const enabled = securitypin.length > 0;
+        const enabled = securitypin.length >= 4 && !isNaN(securitypin);
 
         const { handleSubmit, reset } = this.props;   
                 
@@ -48,21 +48,24 @@ export default class Security extends Component{
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                         <View style={styles.input}>
                             <Icon name='account-circle' size={30} color="#4287f5" style={{alignItems:'center', justifyContent:'center', padding:12}}/>
-                            <TextInput keyboardType="number-pad" placeholder="Security Pin" onChangeText={val => this.onChangeText('securitypin', val)}>
-                                <Text style={{color: "black"}}>{this.state.securitypin}</Text>
+                            <TextInput keyboardType="number-pad" placeholder="Security Pin" style={{ alignItems: 'center', justifyContent: 'center' }} onChangeText={val => this.onChangeText('securitypin', val)}>
+                                <Text style={{color: "black", alignItems: 'center', textAlign: 'center', justifyContent: 'center' }}>{this.state.securitypin}</Text>
                             </TextInput>
                         </View>
                     </View>
-
+                    <View style={{ position: 'relative', top: 40, marginStart: 24, }}>
+                        <Text style={{ fontSize: 12, textAlign: 'right', marginEnd: 26, }}>*Must be a Number!</Text>
+                    </View>
                     <View style={{ justifyContent: 'flex-end', flex: 1, marginBottom: 54, marginEnd: 0 }}>
                         <View style={{ alignItems:'center', marginTop: 20, }}>
                             {/* <CustomButtonBorder title='Pay' colors={['#90dae1', '#4287f5']} onPress={() => null}/> */}
                             <TouchableOpacity 
-                                name={ this.state.btnPay } disabled={ !enabled }
+                                name={ this.state.btnPay } 
+                                disabled={ !enabled }
                                 style={[
                                     styles.containerButtonPay,
                                     { 
-                                        backgroundColor: securitypin ? '#4263D5' : '#4263D530', 
+                                        backgroundColor: enabled ? '#4263D5' : '#4263D530', 
                                     }
                                     ]}>
                                 <Text
@@ -88,13 +91,14 @@ export default class Security extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        backgroundColor: '#ffffff',
+        flex: 1,
     },
 
     styleTextPIN: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 30
+        marginTop: 100
     },
 
     textPin: {
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
         flex: 1,
         position:'absolute',
         flexDirection: 'row',
-        width: 350,
+        width: 310,
         height: 55,
         backgroundColor: 'white',
         margin: 10,
@@ -136,7 +140,7 @@ const styles = StyleSheet.create({
     },
 
     containerButtonPay: {
-        width: 344,
+        width: 310,
         height: 40,
         borderRadius: 20,
         justifyContent: 'center',

@@ -7,6 +7,7 @@ export default class FindMerchant extends Component{
     state = {
         merchantName: '',
     }
+
     onChangeText = (key, val) => {
         this.setState({ [key]: val })
     }
@@ -15,6 +16,21 @@ export default class FindMerchant extends Component{
             merchantName: ''
         })
     }
+   
+    onSearch = (merchantName) => {
+        if (merchantName == "koi" && merchantName == "chatime") {
+            setTimeout(() => {
+                this.props.navigation.navigate("ErrorFindMerchantScreen");
+            }, 1000);
+        } 
+        // if (merchantName.length != 'koi' && merchantName.length != 'chatime') 
+        else {
+            setTimeout(() => {
+                this.props.navigation.navigate('LocationMerchantScreen');
+            }, 1000)
+        }
+    }
+
     render(){
         const { merchantName } = this.state;
         const enabled = merchantName.length > 2 && merchantName.length < 20;
@@ -32,7 +48,7 @@ export default class FindMerchant extends Component{
 
                     <View style={styles.input}>
                         <Icon name='home' size={30} color="#4287f5" style={{alignItems:'center', justifyContent:'center', padding:12}}/>
-                            <TextInput style={styles.textinput} mode='outlined' placeholder="Merchant Name" onChangeText={val => this.onChangeText('merchantName', val)}>
+                            <TextInput style={styles.textinput} name="this.state.merchantName" mode='outlined' placeholder="Merchant Name" onChangeText={val => this.onChangeText('merchantName', val)}>
                                 <Text>{this.state.merchantName}</Text>
                             </TextInput>
                     </View>
@@ -40,8 +56,7 @@ export default class FindMerchant extends Component{
                     <View style={{alignItems:'center', marginTop: '174%'}}>
                         <TouchableOpacity
                             disabled={ !enabled }
-                            onPress={() => null}
-                            // this.props.navigation.navigate('SignIn')
+                            onLongPress={this.onSearch}
                             style={[
                                 styles.containerBtnSearch,
                                 { 
@@ -84,21 +99,22 @@ const styles = StyleSheet.create({
       top: 20,
   },
   
-  form:{
-      flex:1,
-      width:200,
-      justifyContent:'center',
-      alignItems:'center',
-      position:'absolute',
-      top:100
-  },
   
   image:{
       position:'absolute',
       top:-50,
       left:-45
+    },
+    
+  form:{
+    flex:1,
+    width:200,
+    justifyContent:'center',
+    alignItems:'center',
+    position:'absolute',
+    top:100
   },
-  
+
   input: {
       flex: 1,
       flexDirection: 'row',

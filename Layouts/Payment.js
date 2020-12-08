@@ -50,7 +50,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     containerMenus: {
-        margin: 20
+        marginTop: 80,
+        marginStart: 20,
+        marginEnd: 20,
     },
 
     conatinerTouchScan: {
