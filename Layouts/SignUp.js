@@ -7,10 +7,6 @@ import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import SignIn from './SignIn';
 
-// var iconUsername = require('../img/IconUsername.png');
-// var iconEmail = require('../img/IconEmail.png');
-// var iconNomorPonsel = require('../img/IconNomorPonsel.png');
-
 class SignUp extends Component{
   state = {
     name: '',
@@ -23,13 +19,9 @@ class SignUp extends Component{
   }
   render(){
     const { name, email, securitypin, phonenumber } = this.state;
-    // const enabled = 
+    
     return(
       <View style={styles.container}>
-          {/* <Image source={Logo} style={styles.image}></Image> */}
-          {/* <Text>{this.props.token}</Text> */}
-
-
           <View>
               <Text style={ styles.containerJudul }>
                   Terima kasih telah bergabung bersama kami :) {'\n'}Kami akan mengirimkan 
@@ -57,7 +49,7 @@ class SignUp extends Component{
 
               <View style={styles.input}>
                   <Icon name='email' size={30} color="#4287f5" style={{alignItems:'center', justifyContent:'center', padding:12}}/>
-                      <TextInput style={styles.textinput} mode='outlined' placeholder="Email" onChangeText={val => this.onChangeText('email', val)}>
+                      <TextInput style={styles.textinput} mode='outlined' placeholder="Email Address" onChangeText={val => this.onChangeText('email', val)}>
                           <Text>{this.state.email}</Text>
                       </TextInput>
               </View>
@@ -94,13 +86,12 @@ class SignUp extends Component{
 export default SignUp;
 
 const styles = StyleSheet.create({
-  container:{
+container:{
     flex:1,
     alignItems:'center',
     justifyContent:'center',
     paddingStart: 24,
 },
-
 containerJudul: {
     flex: 1,
     fontSize: 12,
@@ -110,7 +101,6 @@ containerJudul: {
     top: 20,
     left: 3,
 },
-
 form:{
     flex:1,
     width:200,
@@ -119,13 +109,11 @@ form:{
     position:'absolute',
     top:100
 },
-
 image:{
     position:'absolute',
     top:-50,
     left:-45
 },
-
 input: {
     flex: 1,
     flexDirection: 'row',
@@ -142,9 +130,8 @@ input: {
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5
-  },
-
-  textinput:{
+},
+textinput:{
     flex: 1,
     paddingLeft: 10,
     backgroundColor: 'white',
@@ -152,13 +139,13 @@ input: {
     alignItems:'center',
     justifyContent:'center',
     borderRadius: 20,
-  },
-
-  bottom: {
+    marginEnd: 20,
+},
+bottom: {
     flex: 1, 
     justifyContent: 'flex-end', 
     marginBottom: 14,
     display: 'flex',
     position: 'relative'
-  },
+},
 });

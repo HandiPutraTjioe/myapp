@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { View, Text, Image, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Image, TextInput, StyleSheet, BackHandler, Alert } from 'react-native';
 import Logo from '../assets/bubblelogin.png';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import {Actions} from 'react-native-router-flux';
@@ -21,9 +21,54 @@ export default class Security extends Component{
         this.setState({ [key]: val })
     }
 
+    showAlert(){
+        Alert.alert(
+            "lorem ipsum?",
+            [
+                {text: "Yes", onPress: () => console.log("Yes")},
+                {text: "No", onPress: () => console.log("No")}
+            ]
+        )
+    }
     componentDidMount(){
-        user_balance = this.props.user_balance
-        merchant_balance = this.props.merchant_balance
+        BackHandler.addEventListener("hardwareBackPress",this.handleBackPress);
+        return false;
+        // user_balance = this.props.user_balance
+        // merchant_balance = this.props.merchant_balance
+        // this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+        //     onPress = {showAlert()}
+        //     // this.props.navigation.navigate('Payment'); // works best when the goBack is async
+        //     return false;
+        // });
+    }
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
+    }    
+
+    handleBackPress = () => {
+        // this.goBack(); // works best when the goBack is async
+
+        Alert.alert(
+            "Confirmation",
+            "Are you sure you want to Cancel the Order?",
+            [
+                {
+                    text: "Yes",
+                    onPress: () => {
+                        return this.props.navigation.navigate('Payment');
+                    },
+                },
+                {
+                    text: "No",
+                    onPress: () => {
+                        console.log("Cancel Pressed");
+                    },
+                },
+            ],
+            { cancelable: true }
+        );
+        return true;
     }
 
     onClear = () => {
@@ -31,6 +76,7 @@ export default class Security extends Component{
             securitypin: ''
         })
     }
+
 
     render(){
         const { securitypin } = this.state;
@@ -149,5 +195,8 @@ const styles = StyleSheet.create({
     styleTextPay: {
         textAlign: 'center',
         fontSize: 15
+    },
+    yes: {
+        color: '#EB5757',
     }
 })

@@ -19,9 +19,10 @@ import FindMerchant from './Layouts/FIndMerchant';
 import LocationMerchant from './Layouts/LocationMerchant';
 import errorFindMerchant from './Layouts/Components/ErrorFindMerchant';
 import InputNominal from './Layouts/InputNominal';
-
-// import { MaterialCommunityIcons } from '@expo/vector-icons';
-// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import EditProfile from './Layouts/EditProfile';
+import SuccessPayment from './Layouts/SuccessPayment';
+import CustomerService from './Layouts/CustomerService';
+import FAQ from './Layouts/FAQ';
   
   const Stack = createStackNavigator();
   
@@ -75,8 +76,20 @@ import InputNominal from './Layouts/InputNominal';
                         component={InputNominal}
                         options={{ headerShown: true, headerTitleAlign: 'center', title: 'Find Merchant', headerTransparent: true }}/>
           <Stack.Screen name="SecurityPINScreen"
-                        component={SecurityPage}
-                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Security PIN', headerTransparent: true }}/>
+                        component={SecurityPage} 
+                        options={{ headerShown: false, headerTitleAlign: 'center', title: 'Security PIN', headerTransparent: true, }} />
+          <Stack.Screen name="SuccessPaymentScreen"
+                        component={SuccessPayment}
+                        options={{ headerShown: false, headerTitleAlign: 'center', title: 'Find Merchant', headerTransparent: true }}/>
+          <Stack.Screen name="EditProfileScreen"
+                        component={EditProfile}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Edit Profile', headerTransparent: false }}/>                        
+          <Stack.Screen name="CustomerServiceScreen"
+                        component={CustomerService}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Customer Service', headerTransparent: false }}/>
+          <Stack.Screen name="FAQScreen"
+                        component={FAQ}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'FAQ', headerTransparent: false }}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

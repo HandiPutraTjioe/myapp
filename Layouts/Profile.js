@@ -13,8 +13,6 @@ import arrow from '../assets/arrow.png';
 import Footers from './Footers';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-// var bg = require("../img/background.png");
-
 export default class Profile extends Component{
     constructor(props){
         super(props);
@@ -53,10 +51,11 @@ export default class Profile extends Component{
                     </View>
 
                     <View style={ styles.containerAccount }>
-                        <TouchableOpacity style={ styles.styleButtonEditProfile }>
+                        <TouchableOpacity style={ styles.styleButtonEditProfile }
+                            onPress={() => this.props.navigation.navigate('EditProfileScreen')}>
                             <Image source={icon_edit_profile} style={ styles.styleImageEditProfile }/>
                             <Text style={ styles.styleTextEditProfile }>Edit Profile</Text>
-                            <Image source={arrow} style={{ marginTop: 14, marginStart: '57%', width: 14, height: 14, marginEnd: 30, resizeMode: 'contain' }}/>
+                            <Image source={arrow} style={{ marginTop: 14, marginEnd: 20, width: 14, height: 14, marginEnd: 30, resizeMode: 'contain' }}/>
                         </TouchableOpacity>
                     </View>
                 </View>         
@@ -67,27 +66,29 @@ export default class Profile extends Component{
                     </View>
 
                     <View style={ styles.containerOtherInfo }>
-                        <TouchableOpacity style={ styles.styleButtonFAQ }>
-                            <Image source={icon_faq} style={{ marginTop: 10, marginStart: 22, width: 22, height: 22, marginEnd: 20, resizeMode: 'contain' }}/>
-                            <Text style={{ lineHeight: 40, fontSize: 16 }}>FAQ</Text>
-                            <Image source={arrow} style={{ marginTop: 14, marginStart: '68%', width: 14, height: 14, marginEnd: 30, resizeMode: 'contain' }}/>
+                        <TouchableOpacity style={ styles.styleButtonFAQ }
+                            onPress={() => this.props.navigation.navigate('FAQScreen')}>
+                            <Image source={icon_faq} style={{ marginTop: 11, marginStart: 22, width: 20, height: 20, marginEnd: 20, resizeMode: 'contain' }}/>
+                            <Text style={{ lineHeight: 40, fontSize: 16, marginEnd: '66%' }}>FAQ</Text>
+                            <Image source={arrow} style={{ marginTop: 14, marginEnd: 20, width: 14, height: 14, marginEnd: 30, resizeMode: 'contain' }}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={{ backgroundColor: '#ffffff', height: 50, flexDirection: 'row' }}>
-                            <Image source={icon_cs} style={{ marginTop: 18, marginStart: 20, width: 22, height: 22, marginEnd: 20, resizeMode: 'contain' }}/>
-                            <Text style={{ lineHeight: 54, fontSize: 16}}>Customer Service</Text>
-                            <Image source={arrow} style={{ marginTop: 14, marginStart: '45%', width: 14, height: 14, marginEnd: 30, resizeMode: 'contain' }}/>
+                        <TouchableOpacity style={{ backgroundColor: '#ffffff', height: 50, flexDirection: 'row' }}
+                            onPress={() => this.props.navigation.navigate('CustomerServiceScreen')}>
+                            <Image source={icon_cs} style={{ marginTop: 18, marginStart: 21, width: 20, height: 20, marginEnd: 20, resizeMode: 'contain' }}/>
+                            <Text style={{ lineHeight: 54, fontSize: 16, marginEnd: '40%'}}>Customer Service</Text>
+                            <Image source={arrow} style={{ marginTop: 14, marginEnd: 19, width: 14, height: 14, marginEnd: 30, resizeMode: 'contain' }}/>
                         </TouchableOpacity>
                     </View>
                 </View>         
 
-                <View style={ styles.containerButtonSignOut }>
-                    <TouchableRipple
-                        onPress={() => this.props.navigation.navigate('SignIn')} 
-                        style={ styles.buttonSignOut }>
-                        <Text style={ styles.styleTextSignOut }>SIGN OUT</Text>
-                    </TouchableRipple>
-                </View>
+                <TouchableOpacity
+                    style={ styles.buttonSignOut }
+                    onPress={() => this.props.navigation.navigate('SignIn')} >
+                    <View style={ styles.containerButtonSignOut }>
+                            <Text style={ styles.styleTextSignOut }>SIGN OUT</Text>
+                    </View>
+                </TouchableOpacity>
 
                 <Content>
                 </Content>
@@ -99,25 +100,25 @@ export default class Profile extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
     imgb : {
-        height: 210,
         width: '100%',
+        height: 210,
     },
     containerJudul: {
-        marginTop: 50,
         marginStart: 24,
+        marginTop: 50,
     },
     styleContainerJudul: {
-        fontSize: 18,
-        color: 'white',
         fontWeight: 'bold',
+        color: 'white',
+        fontSize: 18,
     },
     containerAvatar: {
-        marginTop: 10, 
-        marginLeft: 25, 
         flexDirection: 'row',
+        marginLeft: 25, 
+        marginTop: 10, 
         marginTop: 28,
     },
     containerStyleAvatar: {
@@ -136,65 +137,72 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     styleMenuTextAccount: {
+        fontWeight: '500',
         fontSize: 20, 
-        fontWeight: '500'
     },
     styleButtonEditProfile: {
         backgroundColor: '#ffffff', 
+        flexDirection: 'row',
         height: 50, 
-        flexDirection: 'row'
     },
     styleImageEditProfile: {
-        marginTop: 10, 
+        resizeMode: 'contain',
         marginStart: 20, 
-        width: 22, 
-        height: 22, 
+        marginTop: 10, 
         marginEnd: 20, 
-        resizeMode: 'contain'
+        height: 20, 
+        width: 20, 
     },
     styleTextEditProfile: {
+        marginEnd: '53%', 
         lineHeight: 38, 
-        fontSize: 16 
+        fontSize: 16,
     },
     containerAccount: {
-        marginTop: 14
+        marginTop: 14,
     },
     containerProfileMenuOtherInfo: {
         backgroundColor: 'white',
         width: '100%',
         height: '27%',
-        marginTop: 6
+        marginTop: 6,
     },
     styleMenuOtherInfo: {
         marginStart: 24, 
-        marginTop: 20
+        marginTop: 20,
     },
     styleTextOtherInfo: {
+        fontWeight: '500',
         fontSize: 20, 
-        fontWeight: '500'
     },
     containerOtherInfo: {
-        marginTop: 14
+        marginTop: 14,
     },
     styleButtonFAQ: {
         backgroundColor: '#ffffff', 
+        flexDirection: 'row',
         height: 50, 
-        flexDirection: 'row'
-    },
-    containerButtonSignOut: {
-        margin: 27.8,
-        backgroundColor: '#EB5757',
-        borderColor: '#EB5757',
-        borderRadius: 20,
-        borderStyle: "solid"
     },
     buttonSignOut: {
         justifyContent: 'center',
+        borderColor: '#ffffff',
         alignItems: 'center',
-        padding: 10,
+        borderRadius: 20,
+        marginTop: 34,
+    },
+    containerButtonSignOut: {
+        justifyContent: 'center',
+        borderColor: '#EB5757',
+        borderStyle: "solid",
+        alignItems: 'center',
+        borderRadius: 20,
+        marginBottom: 0,
+        borderWidth: 1,
+        width: '88%',
+        height: 40,
     },
     styleTextSignOut: {
-        color: 'white',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#EB5757',
     },
 });

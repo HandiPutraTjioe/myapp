@@ -67,7 +67,7 @@ export default class SignIn extends React.Component{
                                 <TouchableOpacity
                                     disabled={ !enabled }
                                     onLongPress={() => this.props.navigation.navigate('TheHome')}
-                                    style={{ backgroundColor: '#4287f5', borderRadius: 20 }}
+                                    // style={{ backgroundColor: '#4287f5', borderRadius: 20 }}
                                     style={[
                                         styles.styleButtonSignin,
                                             { 
@@ -88,27 +88,7 @@ export default class SignIn extends React.Component{
                                 <Text style={{ color: '#4287f5', fontSize: 14, fontWeight: 'bold', }}>Sign Up</Text>
                             </TouchableOpacity>
                         </View>
-                    </ImageBackground>
-    
-    
-                    {/* <View style={ styles.bottom }>
-                        <TouchableRipple style={{ alignItems: 'center', marginBottom: 15 }}
-                            onPress = {() => proses() } >
-                                <Text style={ styles.containerSignUp }>test</Text>
-                        </TouchableRipple>
-
-                        <View style={{ display: 'flex', height: 80, 
-                            backgroundColor: '#ffffff', flexDirection: 'column',
-                            justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableRipple 
-                                style={{ backgroundColor: '#2166b0', width: 200, height: 50,
-                                justifyContent: 'center', alignItems: 'center' }}
-                                onPress = {() => this.props.navigation.navigate("SignUp")}>
-                                <Text style={{ color: 'white', textAlign: 'center' }}>Sign Up</Text>
-                            </TouchableRipple>
-                        </View>
-                    </View> */}
-                    
+                    </ImageBackground>                    
                 </View>
             );
         }
@@ -119,136 +99,133 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     imgb : {
+        resizeMode: 'cover',
         height: '100%',
         width: '100%',
-        resizeMode: 'cover'
     },
     imglogo:  {
-        height: 100,
+        justifyContent: 'center',
         resizeMode: "contain",
+        alignItems: 'center',
         marginLeft: 70,
         marginTop: 80,
-        justifyContent: 'center',
-        alignItems: 'center'
+        height: 100,
     },
     header: {
-      flex: 1
+      flex: 1,
     },
     judul: {
-        fontSize: 50,
+        fontWeight: 'bold',        
         color: "white",
         marginTop: 40,  
-        fontWeight: 'bold',        
+        fontSize: 50,
     },
     square: {
+        backgroundColor: 'white',
         width: 70,
         height: 4,
-        backgroundColor: 'white'
     },
     containerJudulInput: {
         marginHorizontal: 40, 
         marginTop: 60
     },
     textJudul: {
-        fontSize: 15,
+        fontWeight: 'bold',
         color: "#F2F2F2",
-        fontWeight: 'bold'
+        fontSize: 15,
     },
     containerInput: {
-        marginTop: 40,
-        flexDirection: 'row',
         paddingHorizontal: 12,
-        borderRadius: 0,
         alignItems: 'center',
-        // backgroundColor: 'white',
-        // borderBottomWidth: 1.5,
+        flexDirection: 'row',
+        borderRadius: 0,
+        marginTop: 40,
     },
     containerPIN: {
-        marginTop: 10,
-        flexDirection: 'row',
         paddingHorizontal: 12,
-        borderRadius: 0,
         alignItems: 'center',
-        // backgroundColor: 'white',
-        // borderBottomWidth: 1.5,
+        flexDirection: 'row',
+        borderRadius: 0,
+        marginTop: 10,
     },
     openDialogView: {
+        justifyContent: 'center',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: 14,
         lineHeight: 16,        
+        fontSize: 14,
     },
     textIdCountry: {
-        fontSize: 18,
         color: '#33333350',
+        fontSize: 18,
     },
     txtInput: {
+        backgroundColor: 'white', 
+        marginStart: 5,
+        marginTop: 10, 
+        marginEnd: 5,
+        height: 50,
         width: 300, 
         height: 45, 
-        backgroundColor: 'white', 
-        marginTop: 10, 
-        marginStart: 5,
-        marginEnd: 5,
         flex: 1,
-        height: 50
     },
     containerSignUp: {
-        fontSize: 14, 
+        fontWeight: 'bold',
         color: '#F2F2F2',
-        fontWeight: 'bold'
+        fontSize: 14, 
     },
     bottom: {
-        flex: 1, 
         justifyContent: 'flex-end', 
+        position: 'relative',
         marginBottom: 14,
         display: 'flex',
-        position: 'relative'
+        flex: 1, 
     },
     form:{
+        justifyContent: 'center',
+        alignItems: 'center',
         position: 'absolute',
         top: 10,
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
     },
     input: {
-        flex: 1,
-        flexDirection: 'row',
-        width: 300,
-        height: 55,
+        shadowOffset:{width: 0, height: 2},
         backgroundColor: 'white',
-        margin: 10,
+        flexDirection: 'row',
+        shadowOpacity: 0.25,
+        shadowColor:'black',
+        shadowRadius: 3.84,
+        fontWeight: '500',
         color: '#90dae1',
         borderRadius: 20,
         fontSize: 18,
-        fontWeight: '500',
-        shadowColor:'black',
-        shadowOffset:{width: 0, height: 2},
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
         elevation: 5,
+        width: 300,
+        height: 55,
+        margin: 10,
+        flex: 1,
     },
     textinput:{
-        flex: 1,
-        paddingLeft: 10,
         backgroundColor: 'white',
+        justifyContent:'center',
+        alignItems:'center',
         borderRadius: 20,
         color: '#424242',
-        alignItems:'center',
-        justifyContent:'center',
-        fontSize: 18
+        paddingLeft: 10,
+        marginEnd: 20,
+        fontSize: 18,
+        flex: 1,
     },
     styleButtonSignin: {
+        borderRadius: 20 ,
         width: 300, 
         height: 45, 
-        borderRadius: 20 
     },
     styleTextSignIn: {
-        textAlign: 'center', 
-        alignItems: 'center', 
+        color: '#ffffff', fontSize: 20,
         fontSize: 20, lineHeight: 45, 
-        color: '#ffffff', fontSize: 20 
+        alignItems: 'center', 
+        textAlign: 'center', 
     },
 });
 
