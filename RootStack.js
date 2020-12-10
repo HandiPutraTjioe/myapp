@@ -4,12 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Splash from './Layouts/Splash';
-import Intro from './Layouts/Intro';
 import SignIn from './Layouts/SignIn';
 import SignUp from './Layouts/SignUp';
 import Home from './Layouts/Home';
-import VerifikasiOTP from './Layouts/VerifikasiOTP';
-import SecurityPage from './Layouts/SecurityPage';
 import Payment from './Layouts/Payment';
 import Profile from './Layouts/Profile';
 import Promo from './Layouts/Promo';
@@ -19,6 +16,7 @@ import FindMerchant from './Layouts/FIndMerchant';
 import LocationMerchant from './Layouts/LocationMerchant';
 import errorFindMerchant from './Layouts/Components/ErrorFindMerchant';
 import InputNominal from './Layouts/InputNominal';
+import SecurityPage from './Layouts/SecurityPage';
 import EditProfile from './Layouts/EditProfile';
 import SuccessPayment from './Layouts/SuccessPayment';
 import CustomerService from './Layouts/CustomerService';
@@ -32,19 +30,13 @@ import FAQ from './Layouts/FAQ';
         <Stack.Navigator initialRouteName="MySignUp">
           {/* <Stack.Screen name="TheSplash" 
                         component={Splash}
-                        options={{ headerShown: false }}/> */}
-          {/* <Stack.Screen name="Intro"
-                        component={Intro}
-                        options={{ headerShown: false }}/> */}
-          {/* <Stack.Screen name="SignIn"
+                        options={{ headerShown: false }}/>
+          <Stack.Screen name="SignIn"
                         component={SignIn}
                         options={{ headerShown: false }}/>
           <Stack.Screen name="SignUp"
                         component={SignUp}
-                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Sign Up' }} />             */}
-          {/* <Stack.Screen name="VerifikasiOTP"
-                        component={VerifikasiOTP}
-                        options={{ title: "Verifikasi OTP" }}/> */}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Sign Up' }} />            
           <Stack.Screen name="TheHome"
                         component={Home}
                         options={{ headerShown: false }}/>
@@ -86,7 +78,7 @@ import FAQ from './Layouts/FAQ';
                         options={{ headerShown: true, headerTitleAlign: 'center', title: 'Edit Profile', headerTransparent: false }}/>                        
           <Stack.Screen name="CustomerServiceScreen"
                         component={CustomerService}
-                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Customer Service', headerTransparent: false }}/>
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Customer Service', headerTransparent: false }}/> */}
           <Stack.Screen name="FAQScreen"
                         component={FAQ}
                         options={{ headerShown: true, headerTitleAlign: 'center', title: 'FAQ', headerTransparent: false }}/>

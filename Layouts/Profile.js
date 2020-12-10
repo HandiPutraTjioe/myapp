@@ -82,6 +82,7 @@ export default class Profile extends Component{
                     </View>
                 </View>         
 
+                {/* <View style={{ alignItems: 'center', justifyContent: 'center', }}>
                 <TouchableOpacity
                     style={ styles.buttonSignOut }
                     onPress={() => this.props.navigation.navigate('SignIn')} >
@@ -89,6 +90,17 @@ export default class Profile extends Component{
                             <Text style={ styles.styleTextSignOut }>SIGN OUT</Text>
                     </View>
                 </TouchableOpacity>
+                </View> */}
+
+                <View style={{ alignItems:'center', marginTop: 30, marginBottom: 0, justifyContent: 'center', alignItems: 'center', }}>
+                    <TouchableOpacity
+                        onLongPress={() => this.props.navigation.navigate('SignIn')}
+                        style={ styles.containerSubmit } >
+                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <Text style={{ textAlign: 'center', lineHeight: 42, color: '#ffffff', fontSize: 18, color: '#EB5757' }}>SIGN OUT</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
 
                 <Content>
                 </Content>
@@ -184,11 +196,13 @@ const styles = StyleSheet.create({
         height: 50, 
     },
     buttonSignOut: {
+        backgroundColor: '#ffffff',
         justifyContent: 'center',
         borderColor: '#ffffff',
         alignItems: 'center',
         borderRadius: 20,
         marginTop: 34,
+        width: '100%', height: 40,
     },
     containerButtonSignOut: {
         justifyContent: 'center',
@@ -198,11 +212,16 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginBottom: 0,
         borderWidth: 1,
-        width: '88%',
-        height: 40,
     },
     styleTextSignOut: {
         fontWeight: 'bold',
         color: '#EB5757',
+    },
+    containerSubmit: {
+        backgroundColor: '#ffffff10', 
+        width: 310, height: 45, 
+        borderRadius: 20,
+        borderColor: '#EB5757',
+        borderWidth: 1,
     },
 });

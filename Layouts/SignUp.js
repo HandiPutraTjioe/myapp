@@ -18,7 +18,8 @@ class SignUp extends Component{
       this.setState({ [key]: val })
   }
   render(){
-    const { name, email, securitypin, phonenumber } = this.state;
+    const { name, phonenumber, email, securitypin } = this.state;
+    const enabled = name.length > 5 && name.length < 16 && phonenumber.length > 8 && phonenumber.length < 13 && !isNaN(phonenumber) && phonenumber.substr(0,1) != '8' && email.length > 8 && !email.includes('@', email) && !email.includes('.com') || securitypin.length > 3 && !isNaN(securitypin);
     
     return(
       <View style={styles.container}>
@@ -63,8 +64,14 @@ class SignUp extends Component{
             
               <View style={{alignItems:'center', marginTop: 108}}>
                   <TouchableRipple
-                      style={{ backgroundColor: '#4287f5', width: 310, height: 45, borderRadius: 20 }}
-                      onPress={() => this.props.navigation.navigate('SignIn')}>
+                      disabled={ !enabled }
+                      onPress={() => this.props.navigation.navigate('SignIn')}
+                      style={[
+                          styles.styleButtonSignUp,
+                          { 
+                              backgroundColor: enabled ? '#4263D5' : '#4263D550'
+                          }
+                      ]}>
                       <Text style={{ textAlign: 'center', fontSize: 20, lineHeight: 43, color: '#ffffff', fontSize: 18 }}>Sign Up</Text>
                    </TouchableRipple>
               </View>
@@ -86,66 +93,73 @@ class SignUp extends Component{
 export default SignUp;
 
 const styles = StyleSheet.create({
-container:{
-    flex:1,
-    alignItems:'center',
-    justifyContent:'center',
-    paddingStart: 24,
-},
-containerJudul: {
-    flex: 1,
-    fontSize: 12,
-    fontFamily: 'Roboto',
-    letterSpacing: 1,
-    lineHeight: 20,
-    top: 20,
-    left: 3,
-},
-form:{
-    flex:1,
-    width:200,
-    justifyContent:'center',
-    alignItems:'center',
-    position:'absolute',
-    top:100
-},
-image:{
-    position:'absolute',
-    top:-50,
-    left:-45
-},
-input: {
-    flex: 1,
-    flexDirection: 'row',
-    width: 310,
-    height: 55,
-    backgroundColor: 'white',
-    margin: 10,
-    color: '#90dae1',
-    borderRadius: 20,
-    fontSize: 18,
-    fontWeight: '500',
-    shadowColor:'black',
-    shadowOffset:{width: 0, height: 2},
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5
-},
-textinput:{
-    flex: 1,
-    paddingLeft: 10,
-    backgroundColor: 'white',
-    color: '#424242',
-    alignItems:'center',
-    justifyContent:'center',
-    borderRadius: 20,
-    marginEnd: 20,
-},
-bottom: {
-    flex: 1, 
-    justifyContent: 'flex-end', 
-    marginBottom: 14,
-    display: 'flex',
-    position: 'relative'
-},
+    container:{
+        backgroundColor: '#ffffff',
+        justifyContent:'center',
+        alignItems:'center',
+        paddingStart: 24,
+        flex:1,
+    },
+    containerJudul: {
+        flex: 1,
+        fontSize: 12,
+        fontFamily: 'Roboto',
+        letterSpacing: 1,
+        lineHeight: 20,
+        top: 20,
+        left: 3,
+    },
+    form:{
+        flex:1,
+        width:200,
+        justifyContent:'center',
+        alignItems:'center',
+        position:'absolute',
+        top:100
+    },
+    image:{
+        position:'absolute',
+        top:-50,
+        left:-45
+    },
+    input: {
+        flex: 1,
+        flexDirection: 'row',
+        width: 310,
+        height: 55,
+        backgroundColor: 'white',
+        margin: 10,
+        color: '#90dae1',
+        borderRadius: 20,
+        fontSize: 18,
+        fontWeight: '500',
+        shadowColor:'black',
+        shadowOffset:{width: 0, height: 2},
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5
+    },
+    textinput:{
+        flex: 1,
+        paddingLeft: 10,
+        backgroundColor: 'white',
+        color: '#424242',
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius: 20,
+        marginEnd: 20,
+    },
+    bottom: {
+        flex: 1, 
+        justifyContent: 'flex-end', 
+        marginBottom: 14,
+        display: 'flex',
+        position: 'relative'
+    },
+    styleButtonSignUp: {
+        backgroundColor: '#4287f5', 
+        borderRadius: 20,
+        height: 45, 
+        width: 310, 
+    },
 });

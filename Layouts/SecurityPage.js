@@ -111,7 +111,7 @@ export default class Security extends Component{
                                 style={[
                                     styles.containerButtonPay,
                                     { 
-                                        backgroundColor: enabled ? '#4263D5' : '#4263D530', 
+                                        backgroundColor: enabled ? '#4263D5' : '#4263D550', 
                                     }
                                     ]}>
                                 <Text

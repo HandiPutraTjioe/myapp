@@ -67,11 +67,10 @@ export default class SignIn extends React.Component{
                                 <TouchableOpacity
                                     disabled={ !enabled }
                                     onLongPress={() => this.props.navigation.navigate('TheHome')}
-                                    // style={{ backgroundColor: '#4287f5', borderRadius: 20 }}
                                     style={[
                                         styles.styleButtonSignin,
                                             { 
-                                                backgroundColor: enabled ? '#4263D5' : '#4263D510'
+                                                backgroundColor: enabled ? '#4263D5' : '#4263D550'
                                             }
                                         ]}
                                     onPress={() => null}>

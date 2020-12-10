@@ -1,8 +1,10 @@
 import React , { Component, useState, useRef, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Keyboard } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Keyboard, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TouchableRipple } from 'react-native-paper';
 import { TextInput } from 'react-native-gesture-handler';
+
+import background from '../assets/background.png';
 
 class CustomerService extends Component{
     state = {
@@ -26,7 +28,7 @@ class CustomerService extends Component{
                         Silahkan untuk mengisi data dibawah ini. {"\n"}Terima kasih :D
                     </Text>
                 </View>
-            
+
                 <View style={styles.form}>
                     <View style={{ flexDirection: 'row', marginStart: -66, marginEnd: -66, }}>
                         <Icon name='email' size={30} color="#4287f5" style={{ alignItems:'center', justifyContent:'center', paddingTop: 6, paddingStart: 6, marginTop: 16 }}/>
@@ -71,7 +73,7 @@ class CustomerService extends Component{
                             style={[
                                 styles.containerSubmit,
                                 {
-                                    backgroundColor: enabled ? '#4263D5' : '#4263D510'
+                                    backgroundColor: enabled ? '#4263D5' : '#4263D550'
                                 }
                             ]} >
                             <Text style={{ textAlign: 'center', fontSize: 20, lineHeight: 43, color: '#ffffff', fontSize: 18 }}>SUBMIT</Text>
@@ -92,6 +94,10 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         paddingStart: 24,
+    },
+    imgb : {
+        height: '100%',
+        width: '100%',
     },
     containerJudul: {
         fontFamily: 'Roboto',
