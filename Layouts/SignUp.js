@@ -19,7 +19,7 @@ class SignUp extends Component{
   }
   render(){
     const { name, phonenumber, email, securitypin } = this.state;
-    const enabled = name.length > 5 && name.length < 16 && phonenumber.length > 8 && phonenumber.length < 13 && !isNaN(phonenumber) && phonenumber.substr(0,1) != '8' && email.length > 8 && !email.includes('@', email) && !email.includes('.com') || securitypin.length > 3 && !isNaN(securitypin);
+    const enabled = name.length > 5 && name.length < 16 && phonenumber.length > 8 && phonenumber.length < 13 && !isNaN(phonenumber) && phonenumber.substr(0,1) != '8' && email.length > 8 && !email.includes('@') && !email.includes('.com') || securitypin.length > 3 && !isNaN(securitypin);
     
     return(
       <View style={styles.container}>
@@ -40,6 +40,7 @@ class SignUp extends Component{
                           <Text>{this.state.name}</Text>
                       </TextInput>
               </View>
+              <Text style={{ fontSize: 10, marginStart: 150, marginEnd: -60, marginBottom: 10 }}>*Max 8-16 Characters</Text>
 
               <View style={styles.input}>
                   <Icon name='phone' size={30} color="#4287f5" style={{alignItems:'center', justifyContent:'center', padding:12}}/>
@@ -47,6 +48,7 @@ class SignUp extends Component{
                           <Text>{this.state.phonenumber}</Text>
                       </TextInput>
               </View>
+              <Text style={{ fontSize: 10, marginStart: 40, marginEnd: -90, marginBottom: 10 }}>*Between 8-13 digits, Must be a Number</Text>
 
               <View style={styles.input}>
                   <Icon name='email' size={30} color="#4287f5" style={{alignItems:'center', justifyContent:'center', padding:12}}/>
@@ -54,6 +56,7 @@ class SignUp extends Component{
                           <Text>{this.state.email}</Text>
                       </TextInput>
               </View>
+              <Text style={{ fontSize: 10, marginStart: 0, marginEnd: -70, marginBottom: 10 }}>*Greater than 8 Characters, Must include @ and .com</Text>
 
               <View style={styles.input}>
                   <Icon name='onepassword' size={30} color="#4287f5" style={{alignItems:'center', justifyContent:'center', padding:12}}/>
@@ -61,8 +64,9 @@ class SignUp extends Component{
                       <Text>{this.state.securitypin}</Text>
                   </TextInput>
               </View>
+              <Text style={{ fontSize: 10, marginStart: 104, marginEnd: -60, marginBottom: 0 }}>*Max 4 digits, Must be a Number</Text>
             
-              <View style={{alignItems:'center', marginTop: 108}}>
+              <View style={{alignItems:'center', marginTop: 46}}>
                   <TouchableRipple
                       disabled={ !enabled }
                       onPress={() => this.props.navigation.navigate('SignIn')}
@@ -76,7 +80,7 @@ class SignUp extends Component{
                    </TouchableRipple>
               </View>
 
-              <View style={{alignItems:'center', flexDirection: 'row', marginTop: 16, marginBottom: 30 }}>
+              <View style={{alignItems:'center', flexDirection: 'row', marginTop: 0, marginBottom: 30 }}>
                   <Text style={{textAlign:'center', paddingTop:20, fontSize: 14}}>Already have an account?</Text>
                   <TouchableOpacity
                       style={{ paddingTop: 20, paddingStart: 10,  }}

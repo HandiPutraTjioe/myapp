@@ -33,11 +33,11 @@ import FAQ from './Layouts/FAQ';
                         options={{ headerShown: false }}/>
           <Stack.Screen name="SignIn"
                         component={SignIn}
-                        options={{ headerShown: false }}/>
-          <Stack.Screen name="SignUp"
+                        options={{ headerShown: false }}/> */}
+          {/* <Stack.Screen name="SignUp"
                         component={SignUp}
-                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Sign Up' }} />            
-          <Stack.Screen name="TheHome"
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Sign Up' }} />             */}
+          {/* <Stack.Screen name="TheHome"
                         component={Home}
                         options={{ headerShown: false }}/>
           <Stack.Screen name="Payment"
