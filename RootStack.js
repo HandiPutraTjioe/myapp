@@ -20,7 +20,7 @@ import SecurityPage from './Layouts/SecurityPage';
 import EditProfile from './Layouts/EditProfile';
 import SuccessPayment from './Layouts/SuccessPayment';
 import CustomerService from './Layouts/CustomerService';
-import FAQ from './Layouts/FAQ';
+import FAQ from './Layouts/FaqAccordions';
   
   const Stack = createStackNavigator();
   
@@ -37,7 +37,7 @@ import FAQ from './Layouts/FAQ';
           {/* <Stack.Screen name="SignUp"
                         component={SignUp}
                         options={{ headerShown: true, headerTitleAlign: 'center', title: 'Sign Up' }} />             */}
-          {/* <Stack.Screen name="TheHome"
+          <Stack.Screen name="TheHome"
                         component={Home}
                         options={{ headerShown: false }}/>
           <Stack.Screen name="Payment"
@@ -78,10 +78,10 @@ import FAQ from './Layouts/FAQ';
                         options={{ headerShown: true, headerTitleAlign: 'center', title: 'Edit Profile', headerTransparent: false }}/>                        
           <Stack.Screen name="CustomerServiceScreen"
                         component={CustomerService}
-                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Customer Service', headerTransparent: false }}/> */}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Customer Service', headerTransparent: false }}/>
           <Stack.Screen name="FAQScreen"
                         component={FAQ}
-                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'FAQ', headerTransparent: false }}/>
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'FAQ', headerTransparent: true, headerTitleStyle: { color: '#ffffff' } }}/>
         </Stack.Navigator>
       </NavigationContainer>
     );
