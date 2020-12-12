@@ -33,13 +33,6 @@ export default class Security extends Component{
     componentDidMount(){
         BackHandler.addEventListener("hardwareBackPress",this.handleBackPress);
         return false;
-        // user_balance = this.props.user_balance
-        // merchant_balance = this.props.merchant_balance
-        // this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-        //     onPress = {showAlert()}
-        //     // this.props.navigation.navigate('Payment'); // works best when the goBack is async
-        //     return false;
-        // });
     }
 
     componentWillUnmount() {
@@ -47,8 +40,6 @@ export default class Security extends Component{
     }    
 
     handleBackPress = () => {
-        // this.goBack(); // works best when the goBack is async
-
         Alert.alert(
             "Confirmation",
             "Are you sure you want to Cancel the Order?",
@@ -86,7 +77,6 @@ export default class Security extends Component{
                 
         return(
             <View style={ styles.container }>
-                {/* <Image source={Logo} style={styles.image}></Image> */}
                 <View style={ styles.styleTextPIN }>
                     <Text style={ styles.textPin }>Please input your Security PIN</Text>
                 </View>
@@ -104,7 +94,6 @@ export default class Security extends Component{
                     </View>
                     <View style={{ justifyContent: 'flex-end', flex: 1, marginBottom: 54, marginEnd: 0 }}>
                         <View style={{ alignItems:'center', marginTop: 20, }}>
-                            {/* <CustomButtonBorder title='Pay' colors={['#90dae1', '#4287f5']} onPress={() => null}/> */}
                             <TouchableOpacity 
                                 name={ this.state.btnPay } 
                                 disabled={ !enabled }

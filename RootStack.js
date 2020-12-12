@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Splash from './Layouts/Splash';
 import SignIn from './Layouts/SignIn';
 import SignUp from './Layouts/SignUp';
+import VerifikasiOTP from './Layouts/VerifikasiOTP';
 import Home from './Layouts/Home';
 import Payment from './Layouts/Payment';
 import Profile from './Layouts/Profile';
@@ -28,15 +29,18 @@ import FAQ from './Layouts/FaqAccordions';
     return(
       <NavigationContainer>
         <Stack.Navigator initialRouteName="MySignUp">
-          {/* <Stack.Screen name="TheSplash" 
+          <Stack.Screen name="TheSplash" 
                         component={Splash}
                         options={{ headerShown: false }}/>
           <Stack.Screen name="SignIn"
                         component={SignIn}
-                        options={{ headerShown: false }}/> */}
-          {/* <Stack.Screen name="SignUp"
+                        options={{ headerShown: false }}/>
+          <Stack.Screen name="SignUp"
                         component={SignUp}
-                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Sign Up' }} />             */}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Sign Up' }} />            
+          <Stack.Screen name="VerifikasiOTPScreen"
+                        component={VerifikasiOTP}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Verify OTP', headerTransparent: true }}/>
           <Stack.Screen name="TheHome"
                         component={Home}
                         options={{ headerShown: false }}/>

@@ -21,7 +21,7 @@ export default class SignIn extends React.Component{
         
         render(){            
             const { phonenumber, securitypin } = this.state;
-            const enabled = phonenumber.length > 9 && phonenumber.length < 13 && securitypin.length > 3;
+            const enabled = phonenumber.substr(0,1) !== '8' && phonenumber.length > 9 && phonenumber.length < 13 && securitypin.length > 3;
                 
             return(
                 <View style={ styles.container }>
@@ -66,7 +66,7 @@ export default class SignIn extends React.Component{
                             <View style={{alignItems:'center', marginTop: 0 }}>
                                 <TouchableOpacity
                                     disabled={ !enabled }
-                                    onLongPress={() => this.props.navigation.navigate('TheHome')}
+                                    onLongPress={() => this.props.navigation.navigate('VerifikasiOTPScreen')}
                                     style={[
                                         styles.styleButtonSignin,
                                             { 
