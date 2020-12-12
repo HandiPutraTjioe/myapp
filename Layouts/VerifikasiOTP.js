@@ -38,6 +38,11 @@ export default class VerifikasiOTP extends Component{
             this.setState({ 
                 timer: 30,
             })
+
+            this.interval = setInterval(
+                () => this.setState((prevState)=> ({ timer: prevState.timer - 1 })),
+                1000
+            );
         }
     }
 
