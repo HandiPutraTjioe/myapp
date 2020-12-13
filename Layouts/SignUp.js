@@ -65,7 +65,7 @@ class SignUp extends Component{
                           <Text>{this.state.phonenumber}</Text>
                       </TextInput>
               </View>
-              <Text style={{ fontSize: 10, marginStart: 40, marginEnd: -90, marginBottom: 10 }}>*Between 8-13 digits, Must be a Number</Text>
+              <Text style={{ fontSize: 10, marginStart: 10, marginEnd: -60, marginBottom: 10 }}>*Between 8-13 digits, Start with 0 {"&"} Must be a Number</Text>
 
               <View style={[ styles.input, this.state.email.length > 8 && this.state.email.includes('@') && this.state.email.includes('.com') ? styles.noterror : styles.error ]}>
                   <Icon name='email' size={30} color="#4287f5" style={{alignItems:'center', justifyContent:'center', padding:12}}/>

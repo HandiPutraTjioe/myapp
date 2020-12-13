@@ -29,7 +29,7 @@ import FAQ from './Layouts/FaqAccordions';
     return(
       <NavigationContainer>
         <Stack.Navigator initialRouteName="MySignUp">
-          <Stack.Screen name="TheSplash" 
+          {/* <Stack.Screen name="TheSplash" 
                         component={Splash}
                         options={{ headerShown: false }}/>
           <Stack.Screen name="SignIn"
@@ -40,7 +40,7 @@ import FAQ from './Layouts/FaqAccordions';
                         options={{ headerShown: true, headerTitleAlign: 'center', title: 'Sign Up' }} />            
           <Stack.Screen name="VerifikasiOTPScreen"
                         component={VerifikasiOTP}
-                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Verify OTP', headerTransparent: true }}/>
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Verify OTP', headerTransparent: true }}/> */}
           <Stack.Screen name="TheHome"
                         component={Home}
                         options={{ headerShown: false }}/>
