@@ -10,18 +10,25 @@ var bg = require("../img/background.png");
 var lg = require("../img/Logo_Balance.png");
 
 export default class SignIn extends React.Component{
-        state = {
-            phonenumber: '', 
-            securitypin: '',
+        constructor(props){
+            super(props);
+            this.state = {
+                phonenumber: '', 
+                securitypin: '',
+                submitButton: '',
+            };
         }
         
         onChangeText = (key, val) => {
             this.setState({ [key]: val })
         }
+
+        componentDidMount = () => {
+            this.refs.phonenumber.focus();
+        }
         
         render(){            
-            const { phonenumber, securitypin } = this.state;
-            const enabled = phonenumber.substr(0,1) !== '8' && phonenumber.length > 9 && phonenumber.length < 13 && securitypin.length > 3;
+            const { phonenumber, securitypin, submitButton } = this.state;
                 
             return(
                 <View style={ styles.container }>
@@ -38,24 +45,31 @@ export default class SignIn extends React.Component{
                         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <View style={styles.form}>
     
-                                <View style={styles.input}>
+                                <View style={[ styles.input, this.state.phonenumber.length > 9 && this.state.phonenumber.length < 13 && this.state.phonenumber.substr(0,1) !== '8' && !isNaN(phonenumber) ? styles.noterror : styles.error  ]}>
                                     <Icon name='phone' size={30} color="#4287f5" style={{alignItems:'center', justifyContent:'center', padding:12}}/>
                                     <TextInput 
+                                        ref={"phonenumber"}
                                         keyboardType='numeric' 
                                         style={styles.textinput} 
-                                        mode='outlined' placeholder="Phone number" 
-                                        onSubmitEditing={() => 
-                                            this._securityinput && this._securityinput.focus()
-                                        }
-                                        onChangeText={val => this.onChangeText('phonenumber', val)}>
+                                        mode='outlined' 
+                                        placeholder="Phone number" 
+                                        onSubmitEditing={() => { this.securitypin.focus(); }}
+                                        onChangeText={val => this.onChangeText('phonenumber', val) }>
                                         <Text>{this.state.phonenumber}</Text>
                                     </TextInput>
                                 </View>
     
-                                <View style={styles.input}>
+                                <View style={[ styles.input, this.state.securitypin.length >= 4 && this.state.securitypin.length <= 4 && !isNaN(securitypin) ? styles.noterror : styles.error ]}>
                                     <Icon name='onepassword' size={30} color="#4287f5" style={{alignItems:'center', justifyContent:'center', padding:12}}/>
-                                    <TextInput keyboardType='numeric' style={styles.textinput} mode='outlined' placeholder="Security pin" secureTextEntry={true} onChangeText={val => this.onChangeText('securitypin', val)}>
-                                        <Text>{this.state.securitypin}</Text>
+                                    <TextInput 
+                                        ref={(securitypin) => { this.securitypin = securitypin; }}
+                                        keyboardType='numeric' 
+                                        style={styles.textinput} 
+                                        mode='outlined' 
+                                        placeholder="Security pin" 
+                                        secureTextEntry={true} 
+                                        onChangeText={val => this.onChangeText('securitypin', val) }>
+                                        <Text style={{ textAlign: 'center' }}>{this.state.securitypin}</Text>
                                     </TextInput>
                                 </View>
                             
@@ -65,15 +79,14 @@ export default class SignIn extends React.Component{
                         <View style={ styles.bottom }>
                             <View style={{alignItems:'center', marginTop: 0 }}>
                                 <TouchableOpacity
-                                    disabled={ !enabled }
-                                    onLongPress={() => this.props.navigation.navigate('VerifikasiOTPScreen')}
+                                    disabled={ this.state.phonenumber == '' && this.state.securitypin >= 4 && this.state.securitypin <= 4 && this.state.phonenumber.substr(0,1) != '8' }
+                                    onPress={() => this.props.navigation.navigate('VerifikasiOTPScreen')}
                                     style={[
                                         styles.styleButtonSignin,
                                             { 
-                                                backgroundColor: enabled ? '#4263D5' : '#4263D550'
+                                                backgroundColor: this.state.phonenumber != '' && this.state.securitypin != '' && this.state.phonenumber.substr(0,1) != '8' ? '#4263D5' : '#4263D550'
                                             }
-                                        ]}
-                                    onPress={() => null}>
+                                        ]}>
                                     <Text style={ styles.styleTextSignIn }>Sign In</Text>
                                 </TouchableOpacity>
                             </View>
@@ -225,6 +238,14 @@ const styles = StyleSheet.create({
         fontSize: 20, lineHeight: 45, 
         alignItems: 'center', 
         textAlign: 'center', 
+    },
+    error: {
+        borderColor: 'red',
+        borderWidth: 1.1,
+    },
+    noterror: {
+        borderColor: 'lightgreen',
+        borderWidth: 1.1,
     },
 });
 

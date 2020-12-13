@@ -150,7 +150,7 @@ export default class VerifikasiOTP extends Component{
                     <TouchableOpacity onPress={this.onResendOTP}>
                         <View style={ styles.btnResend }>
                             <Text style={ styles.textResend }>
-                                Resend OTP ({this.state.timer})
+                                Resend OTP <Text style={{ color: 'red' }}>({this.state.timer})</Text>
                             </Text>
                         </View>
                     </TouchableOpacity>
