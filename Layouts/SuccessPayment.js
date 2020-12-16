@@ -10,7 +10,7 @@ class Success extends Component{
                     <View style={ styles.circle }>
                         <Image style={ styles.styleImg } source={iconSuccess}/>
                     </View>
-                    <Text style={ styles.styleText }>PAYMENT SUCCESS</Text>
+                    <Text style={ styles.styleText }>PAYMENT / TOP UP SUCCESS</Text>
                 </View>
 
                 <View style={ styles.container1 }>
@@ -52,7 +52,9 @@ const styles = StyleSheet.create({
         height: 140
     },
     styleText: {
-        fontWeight: '500',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        lineHeight: 26,
         marginTop: 18,
         fontSize: 18,
     },

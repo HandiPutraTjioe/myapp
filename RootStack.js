@@ -22,6 +22,8 @@ import EditProfile from './Layouts/EditProfile';
 import SuccessPayment from './Layouts/SuccessPayment';
 import CustomerService from './Layouts/CustomerService';
 import FAQ from './Layouts/FaqAccordions';
+import TopUp from './Layouts/TopUp';
+import NominalTopUp from './Layouts/NominalTopUp';
   
   const Stack = createStackNavigator();
   
@@ -86,6 +88,12 @@ import FAQ from './Layouts/FaqAccordions';
           <Stack.Screen name="FAQScreen"
                         component={FAQ}
                         options={{ headerShown: true, headerTitleAlign: 'center', title: 'FAQ', headerTransparent: true, headerTitleStyle: { color: '#ffffff' } }}/>
+          <Stack.Screen name="TopUpScreen"
+                        component={TopUp}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Top Up', headerTransparent: false }}/>  
+          <Stack.Screen name="NominalTopUpScreen"
+                        component={NominalTopUp}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Top Up', headerTransparent: false }}/>  
         </Stack.Navigator>
       </NavigationContainer>
     );

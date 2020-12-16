@@ -67,7 +67,22 @@ class Home extends Component{
                 </View>
                 
                 <View style={ styles.main }>
-                  <Text style={{color:'white', fontSize:16, fontWeight:'200', marginStart: 10, marginTop: 20}}>My cards</Text>
+                  <View style={ styles.styleTextMain }>
+
+                    <View style={{ justifyContent: 'center', alignItems: 'center', paddingBottom: 4 }}>
+                        <Text style={{color:'white', fontSize:16, fontWeight:'200', marginStart: 10, marginTop: 16, }}>My cards</Text>
+                    </View>
+
+                    <TouchableOpacity
+                        style={ styles.containerTopUp }
+                        onPress={() => this.props.navigation.navigate('TopUpScreen')}>
+                        <View style={ styles.containerTopUpText }>
+                            <Text style={{ color:'white', fontSize:16, fontWeight:'200', marginTop: 0, textAlign: 'center' }}>{"+"} Top Up</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                  </View>
+
                   <View style={{ paddingBottom: 2 }}>
                       <ScrollView
                         horizontal={true}
@@ -146,10 +161,29 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   main:{
-    paddingLeft:16,
-    paddingRight:16,
-    paddingBottom:16,
-    paddingTop:20,  
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingBottom: 16,
+    paddingTop: 16,  
+  },
+  styleTextMain: {
+    flexDirection: 'row',
+  },
+  containerTopUp: {
+    justifyContent: 'flex-end', 
+    alignItems: 'flex-end', 
+    display: 'flex', 
+    marginEnd: 10,
+    marginTop: 4,
+    flex: 1, 
+  },
+  containerTopUpText: {
+    backgroundColor: '#ffffff10',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '40%',
+    height: 30,
   },
   imglogo:  {
     resizeMode: 'contain',

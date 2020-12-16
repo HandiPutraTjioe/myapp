@@ -28,7 +28,7 @@ class InputNominal extends Component{
             
             const [checked, setChecked] = useState('');
             const [nominal, setNominal] = useState('');
-            const enabled = nominal > 9999 && nominal < 1000001 && !isNaN(nominal) && checked == 'first' || checked == 'second';
+            const enabled = nominal > 9999 && nominal < 1000001 && !isNaN(nominal) || checked == 'first' && checked == 'second';
             return(
                 <View style={ styles.container }>
 

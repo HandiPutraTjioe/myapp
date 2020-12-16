@@ -42,12 +42,12 @@ export default class Security extends Component{
     handleBackPress = () => {
         Alert.alert(
             "Confirmation",
-            "Are you sure you want to Cancel the Order?",
+            "Are you sure you want to Cancel ?",
             [
                 {
                     text: "Yes",
                     onPress: () => {
-                        return this.props.navigation.navigate('Payment');
+                        return this.props.navigation.navigate('TheHome');
                     },
                 },
                 {
@@ -97,6 +97,7 @@ export default class Security extends Component{
                             <TouchableOpacity 
                                 name={ this.state.btnPay } 
                                 disabled={ !enabled }
+                                onPress={() => this.props.navigation.navigate('SuccessPaymentScreen')}
                                 style={[
                                     styles.containerButtonPay,
                                     { 
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     styleTextPIN: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 100
+        marginTop: 80
     },
 
     textPin: {
