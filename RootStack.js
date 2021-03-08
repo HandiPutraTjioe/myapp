@@ -24,6 +24,8 @@ import CustomerService from './Layouts/CustomerService';
 import FAQ from './Layouts/FaqAccordions';
 import TopUp from './Layouts/TopUp';
 import NominalTopUp from './Layouts/NominalTopUp';
+import PulseSS from './Layouts/Pulse';
+import InputPulseSS from './Layouts/InputPulse';
   
   const Stack = createStackNavigator();
   
@@ -94,6 +96,12 @@ import NominalTopUp from './Layouts/NominalTopUp';
           <Stack.Screen name="NominalTopUpScreen"
                         component={NominalTopUp}
                         options={{ headerShown: true, headerTitleAlign: 'center', title: 'Top Up', headerTransparent: false }}/>  
+          <Stack.Screen name="PulseScreen"
+                        component={PulseSS}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Telkomsel Pulse', headerTransparent: false }}/>
+          <Stack.Screen name="InputPulseScreen"
+                        component={InputPulseSS}
+                        options={{ headerShown: true, headerTitleAlign: 'center', title: 'Telkomsel Pulse', headerTransparent: false }}/>                        
         </Stack.Navigator>
       </NavigationContainer>
     );

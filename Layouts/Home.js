@@ -11,6 +11,8 @@ import ProfilePicture from '../assets/aelwen1.jpg';
 import MyImage1 from '../assets/zero_card.png';
 import MyImage2 from '../assets/alfa_card.png';
 
+import Telkomsel from '../assets/telkomsel.png';
+
 import { Avatar } from 'react-native-paper';
 import Footers from './Footers';
 
@@ -120,18 +122,28 @@ class Home extends Component{
                             </View>
                         </View>
                       </ScrollView>
+
                       <View style={ styles.containerSmallCircle }>
                         <View style={ styles.smallCircle } />
                         <View style={ styles.smallCircle1 } />
                       </View>
 
+                      <Text style={{color:'white', fontSize:16, fontWeight:'200', marginStart: 10, marginTop: 10}}>Buy Credit</Text>
+                      <TouchableOpacity activeOpacity={0.85} onPress={() => this.props.navigation.navigate('PulseScreen')}>
+                        <View style={ styles.square }>
+                            <View style={{  alignItems: 'center', justifyContent: 'center', backgroundColor: '#ffffff', borderRadius: 10 }}>
+                                <Image source={Telkomsel} style={{ marginTop: 2, marginBottom: 2, width: '70%', height: '100%', resizeMode: 'stretch' }}/>
+                            </View>
+                        </View>
+                      </TouchableOpacity>
+
                       {/* <Slider */}
 
                       <Text style={{color:'white', fontSize:16, fontWeight:'200', marginStart: 10, marginTop: 14}}>Promo {"&"} Cashback</Text>
                       <TouchableOpacity activeOpacity={0.85} onPress={() => this.props.navigation.navigate('PromoScreen')}>
-                        <View style={ styles.square }>
-                            <View style={{  alignItems: 'center', margin: 33 }}>
-                                <Text style={{ fontSize: 16, textAlign: 'center', letterSpacing: 1 }}>Click to see the {"\n"}Promo {'&'} Cashback</Text>
+                        <View style={ styles.square1 }>
+                            <View style={{  alignItems: 'center' }}>
+                                <Text style={{ fontSize: 16, textAlign: 'center', letterSpacing: 1, lineHeight: 20, marginTop: 10 }}>Click to see the {"\n"} Promo {"&"} Cashbacks </Text>
                             </View>
                         </View>
                       </TouchableOpacity>
@@ -285,8 +297,17 @@ const styles = StyleSheet.create({
   },
   square: {
     // width: 200,
-    height: 105,
-    borderRadius: 20,
+    height: 60,
+    borderRadius: 10,
+    backgroundColor: 'white',
+    marginStart: 8,
+    marginEnd: 8,
+    marginTop: 12
+  },
+  square1: {
+    // width: 200,
+    height: 60,
+    borderRadius: 10,
     backgroundColor: 'white',
     marginStart: 8,
     marginEnd: 8,

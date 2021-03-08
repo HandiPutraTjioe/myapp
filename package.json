@@ -15,7 +15,7 @@
     "@react-navigation/stack": "^5.9.0",
     "@wwdrew/react-native-numeric-textinput": "^1.1.0",
     "axios": "^0.21.0",
-    "expo": "~38.0.8",
+    "expo": "^38.0.8",
     "expo-barcode-scanner": "~8.2.1",
     "expo-linear-gradient": "~8.2.1",
     "expo-status-bar": "^1.0.2",

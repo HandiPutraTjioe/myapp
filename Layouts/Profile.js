@@ -94,7 +94,7 @@ export default class Profile extends Component{
 
                 <View style={{ alignItems:'center', marginTop: 30, marginBottom: 0, justifyContent: 'center', alignItems: 'center', }}>
                     <TouchableOpacity
-                        onLongPress={() => this.props.navigation.navigate('SignIn')}
+                        onLongPress={() => this.props.navigation.navigate('TheSplash')}
                         style={ styles.containerSubmit } >
                         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <Text style={{ textAlign: 'center', lineHeight: 42, color: '#ffffff', fontSize: 18, color: '#EB5757' }}>SIGN OUT</Text>
